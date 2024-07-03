@@ -15,9 +15,7 @@ while(inserimento != 's') //Esce con 's'
     Console.WriteLine($"Forse è: {num}?\ns - Sì\na - Prova più alto\nb - Prova più basso");
     inserimento = Console.ReadKey(true).KeyChar;
     Console.Clear();
-    if (inserimento == 'a') min = num;
-    else if (inserimento == 'b') max = num;
-    else if (inserimento != 's') continue;
+    if (inserimento == 'a') min = num; else if (inserimento == 'b') max = num; else if (inserimento != 's') continue;
     num = ((max-min)/2)+min;
 }
 Console.WriteLine(":-D");
