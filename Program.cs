@@ -1,5 +1,4 @@
-﻿/*
-//Inizializzazione
+﻿/*//Inizializzazione
 int min = 0;
 int max = 100;
 int maxTentativi = 10;
@@ -27,11 +26,11 @@ for (tentativi = 1; tentativi <= maxTentativi; tentativi++)
 
 if (inserimento == 'c') Console.WriteLine("Ho vinto!"); else { Console.WriteLine("Ho perso."); tentativi--; }
 Console.WriteLine($"Tentativi effettuati: {tentativi}");
-
 */
 
 
-/*
+
+
 int[] dadi = new int[5];
 Random numeroCasuale = new Random();
 
@@ -48,8 +47,9 @@ string? tenere = Console.ReadLine(); //Leggo una stringa che contiene i dadi da 
 List<int> tenuti = new List<int>();
 for (int i=0;i<tenere!.Length;i++) tenuti.Add(Convert.ToInt32(tenere.Substring(i, 1))); //Converto la stringa in una lista contenente i dadi da ri-lanciare
 for (int i=0;i<tenuti.Count;i++) dadi[tenuti[i]-1]=numeroCasuale.Next(1, 7); //Ri-lancio solo i dadi da ri-lanciare
-for (int i=0;i<dadi.Length;i++) Console.WriteLine($"{i+1} = {dadi[i]}"); //Ri-scrivo tutti i dadi*/
+for (int i=0;i<dadi.Length;i++) Console.WriteLine($"{i+1} = {dadi[i]}"); //Ri-scrivo tutti i dadi
 
+/*
 using Spectre.Console;
 
 using Spectre.Console.Rendering;
@@ -277,4 +277,4 @@ public static class ColorExtensions
     {
         return (float)((0.2126 * color.R) + (0.7152 * color.G) + (0.0722 * color.B));
     }
-}
+}*/
