@@ -28,7 +28,21 @@ if (inserimento == 'c') Console.WriteLine("Ho vinto!"); else { Console.WriteLine
 Console.WriteLine($"Tentativi effettuati: {tentativi}");
 */
 
+using Spectre.Console;
 
+var grid = new Grid();
+        
+// Add columns 
+grid.AddColumn();
+grid.AddColumn();
+grid.AddColumn();
+
+// Add header row 
+grid.AddRow(new string[]{"Header 1", "Header 2", "Header 3"});
+grid.AddRow(new string[]{"Row 1", "Row 2", "Row 3"});
+
+// Write to Console
+AnsiConsole.Write(grid);
 
 
 int[] dadi = new int[5]; //Array di dadi
