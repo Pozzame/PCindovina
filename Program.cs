@@ -27,7 +27,7 @@ for (tentativi = 1; tentativi <= maxTentativi; tentativi++)
 if (inserimento == 'c') Console.WriteLine("Ho vinto!"); else { Console.WriteLine("Ho perso."); tentativi--; }
 Console.WriteLine($"Tentativi effettuati: {tentativi}");
 */
-
+/*
 using Spectre.Console;
 
 var grid = new Grid();
@@ -43,7 +43,7 @@ grid.AddRow(new string[]{"Row 1", "Row 2", "Row 3"});
 
 // Write to Console
 AnsiConsole.Write(grid);
-
+*/
 
 int[] dadi = new int[5]; //Array di dadi
 Random numeroCasuale = new Random();
