@@ -45,35 +45,37 @@ grid.AddRow(new string[]{"Row 1", "Row 2", "Row 3"});
 AnsiConsole.Write(grid);
 */
 
+
+
 int[] dadi = new int[5]; //Array di dadi
 Random numeroCasuale = new Random();
-
 //Lancio i 5 dadi
-for (int i=0;i<dadi.Length;i++) 
+Console.Clear();
+for (int i = 0; i < dadi.Length; i++)
 {
-    dadi[i]=numeroCasuale.Next(1, 7);
-    Console.WriteLine($"{i+1} = {dadi[i]}");
+    dadi[i] = numeroCasuale.Next(1, 7);
+    Console.WriteLine($"{i + 1} = {dadi[i]}");
 }
-//
 //Cambio dadi
 Console.WriteLine("Quali dadi vuoi cambiare?");
 string? cambiare = Console.ReadLine(); //Leggo una stringa che contiene i dadi da ri-lanciare
-List<int> cambiati = new List<int>();
-for (int i=0;i<cambiare!.Length;i++) cambiati.Add(Convert.ToInt32(cambiare.Substring(i, 1))); //Converto la stringa in una lista contenente i dadi da ri-lanciare
-for (int i=0;i<cambiati.Count;i++) dadi[cambiati[i]-1]=numeroCasuale.Next(1, 7); //Ri-lancio solo i dadi da ri-lanciare
-for (int i=0;i<dadi.Length;i++) Console.WriteLine($"{i+1} = {dadi[i]}"); //Ri-scrivo tutti i dadi
+//Converto la stringa in una lista contenente i dadi da ri-lanciare e ri-lancio solo i dadi da ri-lanciare
+for (int i = 0; i < cambiare!.Length; i++) dadi[Convert.ToInt32(cambiare.Substring(i, 1)) - 1] = numeroCasuale.Next(1, 7);
+for (int i = 0; i < dadi.Length; i++) Console.WriteLine($"{i + 1} = {dadi[i]}"); //Ri-scrivo tutti i dadi
 //
-
 //Calcolo punteggio
 int punteggioTotale = 0;
-for (int i=0;i<dadi.Length;i++) //Ciclo tutto l'array
+for (int i = 0; i < dadi.Length; i++) //Ciclo tutto l'array
 {
     int punteggioParziale = 0;
-    for (int j=0;j<dadi.Length;j++) //Ri-ciclo l'array alal ricerca dei duplicati
-        if (dadi[i]==dadi[j]) punteggioParziale++; //Se trovo un duplicato aumento il parziale
-    if (punteggioParziale>punteggioTotale) punteggioTotale=punteggioParziale; //Se ho trovato un'occorrenza maggiore, aggiorno il punteggio
+    for (int j = 0; j < dadi.Length; j++) //Ri-ciclo l'array alal ricerca dei duplicati
+        if (dadi[i] == dadi[j]) punteggioParziale++; //Se trovo un duplicato aumento il parziale
+    if (punteggioParziale > punteggioTotale) punteggioTotale = punteggioParziale; //Se ho trovato un'occorrenza maggiore, aggiorno il punteggio
 }
-Console.WriteLine($"Punteggio: {punteggioTotale-1}"); //Stampo il punteggio ridotto di 1
+Console.WriteLine($"Punteggio: {punteggioTotale - 1}"); //Stampo il punteggio ridotto di 1
+
+
+
 /*
 using Spectre.Console;
 
