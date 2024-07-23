@@ -68,7 +68,7 @@ int punteggioTotale = 0;
 for (int i = 0; i < dadi.Length; i++) //Ciclo tutto l'array
 {
     int punteggioParziale = 0;
-    for (int j = 0; j < dadi.Length; j++) //Ri-ciclo l'array alal ricerca dei duplicati
+    for (int j = 0; j < dadi.Length; j++) //Ri-ciclo l'array alla ricerca dei duplicati
         if (dadi[i] == dadi[j]) punteggioParziale++; //Se trovo un duplicato aumento il parziale
     if (punteggioParziale > punteggioTotale) punteggioTotale = punteggioParziale; //Se ho trovato un'occorrenza maggiore, aggiorno il punteggio
 }
