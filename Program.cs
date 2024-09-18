@@ -1,4 +1,64 @@
-﻿/*//Inizializzazione
+﻿class Dado
+{
+    private Random numeroCasuale = new Random();
+    private int facce;
+    private int numero;
+    public int Facce 
+    { 
+        get { return facce; } 
+        set 
+        { 
+            if (value > 3) facce = value; 
+            else 
+            {
+                Console.WriteLine("Facce non valido, setto 6."); 
+                facce = 6; 
+            }
+        }
+    }
+    public int Numero { get { return numero; } }
+    public Dado(int facce = 6) { Facce = facce; }
+    public int  Gioca() { numero = numeroCasuale.Next(1, facce - 1); return numero; }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int facce = 12;
+        int[] dadi = new int[5];
+        Dado dado = new Dado(facce);
+
+        //Lancio i 5 dadi
+        Console.Clear();
+        for (int i = 0; i < dadi.Length; i++)
+        {
+            dadi[i] = dado.Gioca();
+            Console.WriteLine($"{i + 1} = {dadi[i]}");
+        }
+        //Cambio dadi
+        Console.WriteLine("Quali dadi vuoi cambiare?");
+        string? cambiare = Console.ReadLine(); //Leggo una stringa che contiene i dadi da ri-lanciare
+                                               //Converto la stringa in una lista contenente i dadi da ri-lanciare e ri-lancio solo i dadi da ri-lanciare
+        for (int i = 0; i < cambiare!.Length; i++) dadi[Convert.ToInt32(cambiare.Substring(i, 1)) - 1] = dado.Gioca();
+        for (int i = 0; i < dadi.Length; i++) Console.WriteLine($"{i + 1} = {dadi[i]}"); //Ri-scrivo tutti i dadi
+                                                                                                //
+                                                                                                //Calcolo punteggio
+        int punteggioTotale = 0;
+        for (int i = 0; i < dadi.Length; i++) //Ciclo tutto l'array
+        {
+            int punteggioParziale = 0;
+            for (int j = 0; j < dadi.Length; j++) //Ri-ciclo l'array alla ricerca dei duplicati
+                if (dadi[i] == dadi[j]) punteggioParziale++; //Se trovo un duplicato aumento il parziale
+            if (punteggioParziale > punteggioTotale) punteggioTotale = punteggioParziale; //Se ho trovato un'occorrenza maggiore, aggiorno il punteggio
+        }
+        Console.WriteLine($"Punteggio: {punteggioTotale - 1}"); //Stampo il punteggio ridotto di 1
+    }
+}
+
+
+
+/*//Inizializzazione
 int min = 0;
 int max = 100;
 int maxTentativi = 10;
@@ -43,40 +103,9 @@ grid.AddRow(new string[]{"Row 1", "Row 2", "Row 3"});
 
 // Write to Console
 AnsiConsole.Write(grid);
-*/
 
 
 
-int[] dadi = new int[5]; //Array di dadi
-Random numeroCasuale = new Random();
-//Lancio i 5 dadi
-Console.Clear();
-for (int i = 0; i < dadi.Length; i++)
-{
-    dadi[i] = numeroCasuale.Next(1, 7);
-    Console.WriteLine($"{i + 1} = {dadi[i]}");
-}
-//Cambio dadi
-Console.WriteLine("Quali dadi vuoi cambiare?");
-string? cambiare = Console.ReadLine(); //Leggo una stringa che contiene i dadi da ri-lanciare
-//Converto la stringa in una lista contenente i dadi da ri-lanciare e ri-lancio solo i dadi da ri-lanciare
-for (int i = 0; i < cambiare!.Length; i++) dadi[Convert.ToInt32(cambiare.Substring(i, 1)) - 1] = numeroCasuale.Next(1, 7);
-for (int i = 0; i < dadi.Length; i++) Console.WriteLine($"{i + 1} = {dadi[i]}"); //Ri-scrivo tutti i dadi
-//
-//Calcolo punteggio
-int punteggioTotale = 0;
-for (int i = 0; i < dadi.Length; i++) //Ciclo tutto l'array
-{
-    int punteggioParziale = 0;
-    for (int j = 0; j < dadi.Length; j++) //Ri-ciclo l'array alla ricerca dei duplicati
-        if (dadi[i] == dadi[j]) punteggioParziale++; //Se trovo un duplicato aumento il parziale
-    if (punteggioParziale > punteggioTotale) punteggioTotale = punteggioParziale; //Se ho trovato un'occorrenza maggiore, aggiorno il punteggio
-}
-Console.WriteLine($"Punteggio: {punteggioTotale - 1}"); //Stampo il punteggio ridotto di 1
-
-
-
-/*
 using Spectre.Console;
 
 using Spectre.Console.Rendering;
