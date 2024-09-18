@@ -42,8 +42,8 @@ class Program
                                                //Converto la stringa in una lista contenente i dadi da ri-lanciare e ri-lancio solo i dadi da ri-lanciare
         for (int i = 0; i < cambiare!.Length; i++) dadi[Convert.ToInt32(cambiare.Substring(i, 1)) - 1] = dado.Gioca();
         for (int i = 0; i < dadi.Length; i++) Console.WriteLine($"{i + 1} = {dadi[i]}"); //Ri-scrivo tutti i dadi
-                                                                                                //
-                                                                                                //Calcolo punteggio
+                                                                                         //
+                                                                                         //Calcolo punteggio
         int punteggioTotale = 0;
         for (int i = 0; i < dadi.Length; i++) //Ciclo tutto l'array
         {
